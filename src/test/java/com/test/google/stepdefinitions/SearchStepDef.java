@@ -41,7 +41,7 @@ public class SearchStepDef {
     }
     @Then("User validates it loads less than one seconds")
     public void user_validates_it_loads_less_than_one_seconds() {
-      googleMainPage.searchResultLoadingSpeed(1.0);
+      Assert.assertTrue(googleMainPage.searchResultLoadingSpeed(1.0));
     }
 
 }

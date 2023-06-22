@@ -12,11 +12,25 @@ Feature: Testing the Google Search Functionality
       When User searches for Kyrgyz Food in USA
       Then User validates the result is less than three hundred million
 
-      Scenario: Happy Path(positive) Testing result for Search
+      Scenario: Testing Loading Time Search for an Item
 
         Given User navigate to the google
         When User searches for Turkish Baklava
         Then User validates it loads less than one seconds
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
