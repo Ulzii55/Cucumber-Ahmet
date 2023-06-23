@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import utils.BrowserUtils;
 
 
@@ -43,17 +44,20 @@ public class FoodOrderPage {
         inviteSection.sendKeys(Note);
         Thread.sleep(1000);
         inviteList.sendKeys(email1, email2);
+        Thread.sleep(2000);
 
     }
 
-    public void validateHouseAddress(String expectedAddress) {
-        Assert.assertTrue(expectedAddress, address.getText().contains(expectedAddress));
-        createGroupOrderButton.click();
+    public boolean validateHouseAddress(String expectedAddress) throws InterruptedException {
+        Select select = new Select(deliveryOptionDropDown);
+        select.getFirstSelectedOption();
+        return BrowserUtils.getText(address).contains(expectedAddress);
 
     }
 
-    public void validateHeader(String expectedHeader, String expectedDescription) {
+    public void validateHeader(String expectedHeader, String expectedDescription) throws InterruptedException {
         createGroupOrderButton.click();
+        Thread.sleep(2000);
         Assert.assertEquals(expectedHeader, BrowserUtils.getText(header));
         Assert.assertTrue(expectedDescription.contains(BrowserUtils.getText(description)));
 
