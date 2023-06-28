@@ -27,12 +27,13 @@ public class GoogleMainPage {
         searchBar.sendKeys(item, Keys.ENTER);
     }
 
-    public boolean linkCount(int expectedNumber) {
+    public boolean linkCount(int expectedNumber) throws InterruptedException {
+        Thread.sleep(2000);
         return allLinks.size() > expectedNumber;
     }
     public boolean ResultFromSearch(int expectedResult){
         String [] result= BrowserUtils.getText(this.result).split(" ");
-        return Integer.parseInt(result[1].replace(",",""))>expectedResult;
+        return Integer.parseInt(result[1].replace(",",""))<expectedResult;
     }
     public boolean searchResultLoadingSpeed(double expectedResult){
         String []result=BrowserUtils.getText(this.result).split(" ");

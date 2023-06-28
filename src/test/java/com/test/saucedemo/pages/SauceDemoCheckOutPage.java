@@ -1,0 +1,10 @@
+package com.test.saucedemo.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class SauceDemoCheckOutPage {
+    public SauceDemoCheckOutPage(WebDriver driver){
+        PageFactory.initElements(driver,this);
+    }
+}

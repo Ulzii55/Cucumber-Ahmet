@@ -24,8 +24,9 @@ public class SearchStepParameterDef {
     }
 
     @Then("User validates first page returns more than {int} Links")
-    public void user_validates_first_page_returns_more_than_links(Integer expectedLink) {
+    public void user_validates_first_page_returns_more_than_links(Integer expectedLink) throws InterruptedException {
         Assert.assertTrue(googleMainPage.linkCount(expectedLink));
+
     }
 
     @Then("User validates the result is less than {int}")

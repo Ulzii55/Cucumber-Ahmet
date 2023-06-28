@@ -22,7 +22,7 @@ public class SearchStepDef {
 
     }
     @Then("User validates first page returns more than ten Links")
-    public void user_validates_first_page_returns_more_than_ten_links() {
+    public void user_validates_first_page_returns_more_than_ten_links() throws InterruptedException {
         Assert.assertTrue(googleMainPage.linkCount(10));
 
     }

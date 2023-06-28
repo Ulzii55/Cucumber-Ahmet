@@ -1,8 +1,20 @@
+@regression
 Feature: Testing food Group order functionality for Weborder website
+  //general description of the test
 
-  Scenario: Place Group Order
-    When User provides 'guest1@microworks.com','Guest1!', and clicks Sign in Button
-    Then User clicks GroupOrderBox,clicks NextButton
-    Then User provides InviteNote 'I LOVE SELENIUM', InviteEmails 'ulzii55@gmail.com','ahmet@gmail.com'
-    Then User Selects delivery 'MyHouse' and validates address '3131 Laguna'
-    Then User clicks GroupOrderButton, validates Header 'View Group Order', Order Info Contains 'Your Group order is now pending'
+  Background:Food Order same steps
+    Given User provides username and password for successful login
+    When User clicks GroupOrderBox,clicks NextButton
+    And User provides note 'I LOVE SELENIUM' to invitees box
+    And User provides gmail 'ulzii55@gmail.com','ahmet@gmail.com' to invite list
+
+  Scenario: Testing Happy Path for Place Group Order
+    And User chooses the location 'My House' and validates address '3137 Laguna'
+    And User clicks Create Group Order Button
+    Then User validates the 'View Group Order' and 'Your Group order is now pending' from description
+
+
+  Scenario: Testing Happy Path for Office Food Order
+    And User chooses the location 'Office' and validates address '2012 EMPIRE BLVD'
+    And User clicks Create Group Order Button
+    Then User validates the 'View Group Order' and 'Your Group order is now pending' from description

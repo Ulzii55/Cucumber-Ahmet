@@ -15,10 +15,6 @@ public class FoodOrderPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "#ConfirmAddressID")
-    WebElement deliveryOptionDropDown;
-    @FindBy(css = "#addressPreview")
-    WebElement address;
     @FindBy(css = ".custom-control-label")
     WebElement groupOrderCheckBox;
     @FindBy(css = "#getAddressNextButton")
@@ -27,6 +23,10 @@ public class FoodOrderPage {
     WebElement inviteSection;
     @FindBy(css = "#InviteList")
     WebElement inviteList;
+    @FindBy(css = "#ConfirmAddressID")
+    WebElement Location;
+    @FindBy(css = "#addressPreview")
+    WebElement address;
     @FindBy(css = "#createGroupOrder")
     WebElement createGroupOrderButton;
     @FindBy(xpath = "//h1[@class='topBannerHeader']")
@@ -34,34 +34,60 @@ public class FoodOrderPage {
     @FindBy(xpath = "//p[contains(text(),'Your group order is now pending')]")
     WebElement description;
 
-    public void createGroupOrder() throws InterruptedException {
-        Thread.sleep(2000);
-        groupOrderCheckBox.click();
+    public void clickGrouOrderButton() {
+        if (groupOrderCheckBox.isDisplayed()) {
+            groupOrderCheckBox.click();
+        }
+    }
+
+    public void clickNextButton() {
         nextButton.click();
     }
 
-    public void inputNoteAndEmails(String Note, String email1, String email2) throws InterruptedException {
-        inviteSection.sendKeys(Note);
-        Thread.sleep(1000);
-        inviteList.sendKeys(email1, email2);
+    public void sendMessage(String message) {
+        inviteSection.sendKeys(message);
+    }
+
+    public void sendEmails(String email1, String email2) {
+        inviteList.sendKeys(email1 + " ," + email2);
+    }
+
+    public void chooseLocationAndValidateAddress(String location, String expectedAddress) throws InterruptedException {
+        BrowserUtils.selectBy(this.Location, location, "text");
+        Assert.assertTrue(BrowserUtils.getText(address).contains(expectedAddress));
         Thread.sleep(2000);
-
     }
 
-    public boolean validateHouseAddress(String expectedAddress) throws InterruptedException {
-        Select select = new Select(deliveryOptionDropDown);
-        select.getFirstSelectedOption();
-        return BrowserUtils.getText(address).contains(expectedAddress);
-
-    }
-
-    public void validateHeader(String expectedHeader, String expectedDescription) throws InterruptedException {
+    public void clickCreateGroupOrderButton() throws InterruptedException {
         createGroupOrderButton.click();
         Thread.sleep(2000);
-        Assert.assertEquals(expectedHeader, BrowserUtils.getText(header));
-        Assert.assertTrue(expectedDescription.contains(BrowserUtils.getText(description)));
-
+    }
+    public  void validateheaderAndValidateDescription(String expectedHeader,String expectedDescription){
+        Assert.assertEquals(expectedHeader,BrowserUtils.getText(header));
+        Assert.assertTrue(BrowserUtils.getText(description).contains(expectedDescription));
     }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
