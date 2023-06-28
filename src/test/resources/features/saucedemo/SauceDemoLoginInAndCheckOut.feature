@@ -12,7 +12,7 @@ Feature: User Login and Checkout
     Then User Validates the '<item>', '<item total amount>', and '<tax amount>'
     And User Validates the '<item price>' plus '<tax amount>' mathces  with the '<item total amount>'
     And User clicks on the Finish Button
-    Then User alidates the Thank you for your order message
+    Then User Validates the Thank you for your order message
 
     Examples:
       | item                              | firstname | lastname | zipCode | item price | tax amount | item total amount |
