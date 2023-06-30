@@ -8,7 +8,7 @@ import utils.BrowserUtils;
 import utils.ConfigReader;
 import utils.DriverHelper;
 
-public class SmartBearHookClass {
+//public class SmartBearHookClass {
 //    WebDriver driver= DriverHelper.getDriver();
 //    @Before
 //    public void setup(){
@@ -19,4 +19,4 @@ public class SmartBearHookClass {
 //        BrowserUtils.getSceenShotForCucumber(driver, scenario);
 //        driver.quit();
 //    }
-}
+//}

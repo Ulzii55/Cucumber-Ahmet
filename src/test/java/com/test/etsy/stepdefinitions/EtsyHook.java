@@ -8,7 +8,7 @@ import utils.BrowserUtils;
 import utils.ConfigReader;
 import utils.DriverHelper;
 
-public class EtsyHook {
+//public class EtsyHook {
 //    WebDriver driver= DriverHelper.getDriver();
 //    @Before
 //    public void setup(){
@@ -17,6 +17,6 @@ public class EtsyHook {
 //    @After
 //    public void tearDown(Scenario scenario){
 //        BrowserUtils.getSceenShotForCucumber(driver,scenario);;
-//       // driver.quit();
+       // driver.quit();
 //    }
-}
+//}

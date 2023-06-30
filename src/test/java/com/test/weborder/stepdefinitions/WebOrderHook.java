@@ -8,8 +8,8 @@ import utils.BrowserUtils;
 import utils.ConfigReader;
 import utils.DriverHelper;
 
-public class WebOrderHook {
-
+//public class WebOrderHook {
+//
 //    WebDriver driver= DriverHelper.getDriver();
 //
 //    @Before // please import from Cucumber.io not JUnit
@@ -21,4 +21,4 @@ public class WebOrderHook {
 //        BrowserUtils.getSceenShotForCucumber(driver,scenario);
 //        driver.quit();
 //    }
-}
+//}
