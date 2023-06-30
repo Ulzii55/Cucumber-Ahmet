@@ -29,7 +29,7 @@ Feature: User Login and Checkout
       | firstname | Ulzii  |
       | lastname  | Ganbat |
       | zipCode   | 60089  |
-    Then User Validates the (item, taxAmount is eight percent and total amount
+    Then User Validates the item, taxAmount is eight percent and total amount
       | item              | Sauce Labs Backpack |
       | tax amount        | 2.40                |
       | item total amount | 32.39               |

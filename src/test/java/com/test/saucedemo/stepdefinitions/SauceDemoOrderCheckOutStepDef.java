@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;
 import utils.DriverHelper;
 
+import java.util.Map;
+
 public class SauceDemoOrderCheckOutStepDef {
     WebDriver driver = DriverHelper.getDriver();
     SauceDemoLoginPage sauceDemoLoginPage = new SauceDemoLoginPage(driver);
@@ -57,20 +59,27 @@ public class SauceDemoOrderCheckOutStepDef {
     }
 
     @Then("User choosec the first item and clicks Add to cart")
-    public void user_choosec_the_first_item_and_clicks_add_to_cart(DataTable dataTable) {
-
+    public void user_choosec_the_first_item_and_clicks_add_to_cart(DataTable dataTable,String item) {
+                sauceDemoProductsPage.chooseProduct(item);
     }
     @Then("User fills in the \\(firstName,lastName, and zipCode) and clicks clicks on the Continue Button")
     public void user_fills_in_the_first_name_last_name_and_zip_code_and_clicks_clicks_on_the_continue_button(DataTable dataTable) {
+        Map<String,String> fillInformation=dataTable.asMap();
+        sauceDemoCheckOutPage.inputInformation(fillInformation.get("Ulzii"),
+                                                 fillInformation.get("Ganbat"),
+                                                  fillInformation.get(60089));
 
     }
-    @Then("User Validates the \\(item, taxAmount is eight percent and total amount")
+    @Then("User Validates the item, taxAmount is eight percent and total amount")
     public void user_validates_the_item_tax_amount_is_eight_percent_and_total_amount(DataTable dataTable) {
-
+        Map<String,String> paymentDetails=dataTable.asMap();
+         sauceDemoCheckOutPage.validateDetails(paymentDetails.get("Sauce Labs Backpack"),
+                                               paymentDetails.get("2.40 "),
+                                               paymentDetails.get("32.39 "));
     }
     @Then("User Validates thank you message")
     public void user_validates_thank_you_message(DataTable dataTable) {
-
+           sauceDemoCheckOutPage.validateThankYouMessage("Thank you for your order message");
     }
 
 
